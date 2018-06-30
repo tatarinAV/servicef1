@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/add', 'ServicesController@getForm');
+Route::post('/add', 'ServicesController@addService');
+Route::get('/services/{service_id}', 'ServicesController@getService');
+Route::get('/services', 'ServicesController@index');
+Route::get('/dashboard', 'HomeController@dashboard');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/', 'HomeController@dashboard');

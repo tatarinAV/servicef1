@@ -17,7 +17,6 @@ class CreateServicesTable extends Migration
             $table->increments('service_id');
             $table->integer('client_id');
             $table->integer('operator_id');
-            $table->dateTime('date_added');
             $table->timestamps();
         });
     }
