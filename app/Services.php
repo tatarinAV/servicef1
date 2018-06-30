@@ -3,11 +3,13 @@
 namespace App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Services extends Model
 {
     //
     static function getServices($data = array()) {
+
         if (!$data) {
             $services = DB::table('services')
                 ->leftJoin('services_description', 'services.service_id', '=', 'services_description.service_id')
@@ -62,7 +64,7 @@ class Services extends Model
 
         $service_id = DB::table('services')->insertGetId(
             [
-                'operator_id' => 1,
+                'operator_id' => Auth::id(),
                 'client_id' => $client_id,
                 'status' => '1',
             ]
@@ -79,6 +81,7 @@ class Services extends Model
 
             ]
         );
+
         return true;
     }
     static function updateStatus($service_id, $status) {
@@ -86,8 +89,5 @@ class Services extends Model
             ->where('service_id', $service_id)
             ->update(['status' => $status]);
         return true;
-    }
-    private function getServiceDescription(){
-
     }
 }
