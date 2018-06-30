@@ -20,7 +20,6 @@ class CreateServicesDescriptionTable extends Migration
             $table->string('serial',255);
             $table->text('comment');
             $table->string('equipment');
-            $table->timestamps();
         });
     }
 
