@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <!-- <div class="container">
         <h2>Статистика</h2>
 
         <table class="table table-striped">
@@ -35,16 +35,18 @@
             </tbody>
         </table>
     </div>
-
+-->
     <div class="container">
         <h2>Выберите действие</h2>
         <div class="row">
             <div class="flex-center position-ref full-height">
                 <div class="btn-group-vertical">
                     <a href="/add" class="btn btn-primary">Принять на ремонт</a>
-                    <a href="/services" class="btn btn-primary">Посмотреть текущие ремонты</a>
+                    <a href="/services?status=1" class="btn btn-primary">Посмотреть текущие ремонты</a>
+                    <a href="/services?status=2" class="btn btn-primary">Посмотреть отремонтированные</a>
+                    <a href="/services?status=2" class="btn btn-primary">Посмотреть выданые</a>
                     <a href="/services" class="btn btn-primary">Посмотреть все ремонты</a>
-                    <a href="/services" class="btn btn-primary">Найти ремонт</a>
+                    <a href="/find" class="btn btn-primary">Найти ремонт</a>
                 </div>
             </div>
         </div>

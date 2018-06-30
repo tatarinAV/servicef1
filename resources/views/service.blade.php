@@ -41,7 +41,19 @@
                         Тип устройства
                     </td>
                     <td>
-                        {{ $service->type_id }}
+                        @if ($service->type_id == 1)
+                            Ноутбук
+                        @elseif ($service->type_id == 2)
+                            Планшет
+                        @elseif ($service->type_id == 3)
+                            Телевизор
+                        @elseif ($service->type_id == 4)
+                            Монитор
+                        @elseif ($service->type_id == 5)
+                            Принтер
+                        @elseif ($service->type_id == 6)
+                            Комплектующие
+                        @endif
                     </td>
                 </tr>
                 <tr>
@@ -76,8 +88,29 @@
                         {{ $service->equipment }}
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Статус ремонта
+                    </td>
+                    <td>
+                        @if ($service->status == 1)
+                            В ремонте (принят в ремонт)
+                        @elseif ($service->status == 2)
+                            Отремонтирован (готов к передаче клиенту)
+                        @elseif ($service->status == 3)
+                            Завершен (выдан клиенту)
+                        @endif
+                    </td>
+                </tr>
 
             </tbody>
         </table>
+        <div class="btn-group">
+            <a href="/services/print/add/{{ $service->service_id }}" class="btn btn-success">Распечатать приемку</a>
+            <a href="/services/print/return/{{ $service->service_id }}" class="btn btn-success">Распечатать акт выдачи</a>
+            <a href="/services/change/{{ $service->service_id }}" class="btn btn-primary">Изменить статус</a>
+            <a href="/services/edit/{{ $service->service_id }}" class="btn btn-primary">Редактировать</a>
+            <a href="/services/delete/{{ $service->service_id }}" class="btn btn-danger ">Удалить</a>
+        </div>
     </div>
 @endsection

@@ -12,6 +12,7 @@
                         <tr>
                             <td>#</td>
                             <td>Клиент</td>
+                            <td>Статус</td>
                             <td>Тип</td>
                             <td>Модель</td>
                             <td>Серийный номер</td>
@@ -23,7 +24,29 @@
                             <tr>
                                 <td>{{ $service->service_id }}</td>
                                 <td>{{ $service->name }} {{ $service->surname }} {{ $service->phone }}</td>
-                                <td>{{ $service->type_id }}</td>
+                                <td>@if ($service->status == 1)
+                                    В ремонте
+                                @elseif ($service->status == 2)
+                                    Отремонтирован
+                                @elseif ($service->status == 3)
+                                    Завершен
+                                @endif
+                                </td>
+                                <td>
+                                    @if ($service->type_id == 1)
+                                        Ноутбук
+                                    @elseif ($service->type_id == 2)
+                                        Планшет
+                                    @elseif ($service->type_id == 3)
+                                        Телевизор
+                                    @elseif ($service->type_id == 4)
+                                        Монитор
+                                    @elseif ($service->type_id == 5)
+                                        Принтер
+                                    @elseif ($service->type_id == 6)
+                                        Комплектующие
+                                    @endif
+                                </td>
                                 <td>{{ $service->model }}</td>
                                 <td>{{ $service->serial }}</td>
                                 <td width="30%">{{ $service->comment }}</td>

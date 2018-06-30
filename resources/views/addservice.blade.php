@@ -20,7 +20,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2 required" for="model">Модель:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="model" placeholder="Модель" name="model">
+                <input type="text" class="form-control" id="model" placeholder="Модель" name="model"  required>
             </div>
         </div>
         <div class="form-group">
@@ -41,7 +41,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Имя</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Имя" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Имя" name="name"  required>
             </div>
         </div>
         <div class="form-group">
@@ -53,7 +53,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="serial">Номер телефона:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="phone" placeholder="Номер телефона" name="phone">
+                <input type="text" class="form-control" id="phone" placeholder="Номер телефона" name="phone"  required>
             </div>
         </div>
         <div class="form-group">

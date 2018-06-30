@@ -14,6 +14,13 @@ class Services extends Model
                 ->leftJoin('clients', 'services.client_id', '=', 'clients.client_id')
                 ->select('*','services_description.comment as comment')
                 ->get();
+        } elseif (isset($data['status'])) {
+            $services = DB::table('services')
+                ->leftJoin('services_description', 'services.service_id', '=', 'services_description.service_id')
+                ->leftJoin('clients', 'services.client_id', '=', 'clients.client_id')
+                ->select('*','services_description.comment as comment')
+                ->where('services.status', $data['status'])
+                ->get();
         }
         return $services;
     }
@@ -28,6 +35,21 @@ class Services extends Model
         return $service;
     }
     static function addService($data) {
+        if (!isset($data['email'])) {
+            $data['email'] = '';
+        }
+        if (!isset($data['comment'])) {
+            $data['comment'] = '';
+        }
+        if (!isset($data['equipment'])) {
+            $data['equipment'] = '';
+        }
+        if (!isset($data['surname'])) {
+            $data['surname'] = '';
+        }
+        if (!isset($data['serial'])) {
+            $data['serial'] = '';
+        }
         $client_id = DB::table('clients')->insertGetId(
                [
                     'name' => $data['name'],
@@ -41,7 +63,8 @@ class Services extends Model
         $service_id = DB::table('services')->insertGetId(
             [
                 'operator_id' => 1,
-                'client_id' => $client_id
+                'client_id' => $client_id,
+                'status' => '1',
             ]
         );
 
@@ -53,8 +76,15 @@ class Services extends Model
                 'serial' => $data['serial'],
                 'comment' => $data['comment'],
                 'equipment' => $data['equipment'],
+
             ]
         );
+        return true;
+    }
+    static function updateStatus($service_id, $status) {
+        DB::table('services')
+            ->where('service_id', $service_id)
+            ->update(['status' => $status]);
         return true;
     }
     private function getServiceDescription(){

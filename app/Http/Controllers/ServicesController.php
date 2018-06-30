@@ -13,9 +13,15 @@ class ServicesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data['services'] = Services::getServices();
+        $services = $request->all();
+        if (isset($services['status'])) {
+            $data['services'] = Services::getServices($services);
+        } else {
+            $data['services'] = Services::getServices();
+        }
+
         return view('services',$data);
     }
 
