@@ -28,10 +28,10 @@
                                 <td>{{ $service->serial }}</td>
                                 <td width="30%">{{ $service->comment }}</td>
 
-                                <td><div class="btn-group btn-group-lg">
-                                        <a href="/services/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Посмотреть"><span class="glyphicons glyphicons-eye-open"></span></a>
-                                        <a href="/services/delete/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Редактировать"><span class="glyphicons glyphicons-edit"></span></a>
-                                        <a href="/services/edit/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Удалить"><span style="color:red;" class="glyphicons glyphicons-remove-sign"></span></a>
+                                <td><div class="btn-group btn-group-sm">
+                                        <a href="/services/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Посмотреть"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                        <a href="/services/edit/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Редактировать"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="/services/remove/{{ $service->service_id }}" type="button" class="btn btn-primary btn-danger" title="Удалить"><span class="glyphicon glyphicon-remove-sign"></span></a>
                                     </div></td>
                             </tr>
 
