@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="container">
-        <table class="table table-striped">
-            <tbody>
+        <div class="row"> <table class="table table-striped">
+                <h2>Информация о ремонте</h2>
+                <tbody>
                 <tr>
                     <td>
                         Номер ремонта
@@ -102,15 +103,47 @@
                         @endif
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Доп.комментарий
+                    </td>
+                    <td>
+                        {{ $service->user_comment }}
+                    </td>
+                </tr>
 
-            </tbody>
-        </table>
-        <div class="btn-group">
-            <a href="/services/print/add/{{ $service->service_id }}" class="btn btn-success">Распечатать приемку</a>
-            <a href="/services/print/return/{{ $service->service_id }}" class="btn btn-success">Распечатать акт выдачи</a>
-            <a href="/services/change/{{ $service->service_id }}" class="btn btn-primary">Изменить статус</a>
-            <a href="/services/edit/{{ $service->service_id }}" class="btn btn-primary">Редактировать</a>
-            <a href="/services/delete/{{ $service->service_id }}" class="btn btn-danger ">Удалить</a>
+                </tbody>
+            </table>
+            <div class="btn-group">
+                <a href="/services/print/add/{{ $service->service_id }}" class="btn btn-success">Распечатать приемку</a>
+                <a href="/services/print/return/{{ $service->service_id }}" class="btn btn-success">Распечатать акт выдачи</a>
+                <a href="/services/status/{{ $service->service_id }}" class="btn btn-primary">Изменить статус</a>
+                <a href="/services/edit/{{ $service->service_id }}" class="btn btn-primary">Редактировать</a>
+                <a href="/services/delete/{{ $service->service_id }}" class="btn btn-danger ">Удалить</a>
+            </div>
         </div>
+        @if(isset($history) && $history)
+            <div class="row">
+                <h2>История статусов</h2>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>Статус</td>
+                        <td>Комментарий</td>
+                        <td>Оператор</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($history as $item)
+                        <tr>
+                            <td>{{ $item->status }}</td>
+                            <td>{{ $item->comment }}</td>
+                            <td>{{ $item->operator_id }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
     </div>
 @endsection

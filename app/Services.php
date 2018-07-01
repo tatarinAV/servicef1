@@ -31,7 +31,7 @@ class Services extends Model
         $service = DB::table('services')
             ->leftJoin('services_description', 'services.service_id', '=', 'services_description.service_id')
             ->leftJoin('clients', 'services.client_id', '=', 'clients.client_id')
-            ->select('*','services_description.comment as comment')
+            ->select('*','services_description.comment as comment','clients.comment as user_comment')
             ->where('services.service_id', $service_id)
             ->first();
         return $service;
@@ -52,13 +52,16 @@ class Services extends Model
         if (!isset($data['serial'])) {
             $data['serial'] = '';
         }
+        if (!isset($data['user_comment'])) {
+            $data['user_comment'] = '';
+        }
         $client_id = DB::table('clients')->insertGetId(
                [
                     'name' => $data['name'],
                     'surname' => $data['surname'],
                     'phone' => $data['phone'],
                     'email' => $data['email'],
-                    'comment' => ''
+                    'comment' => $data['user_comment']
                ]
         );
 
@@ -67,6 +70,14 @@ class Services extends Model
                 'operator_id' => Auth::id(),
                 'client_id' => $client_id,
                 'status' => '1',
+            ]
+        );
+        DB::table('status_history')->insert(
+            [
+                'service_id' => $service_id,
+                'status' => 1,
+                'comment' => $data['comment'],
+                'operator_id' => Auth::id()
             ]
         );
 
@@ -78,16 +89,32 @@ class Services extends Model
                 'serial' => $data['serial'],
                 'comment' => $data['comment'],
                 'equipment' => $data['equipment'],
-
             ]
         );
 
         return true;
     }
-    static function updateStatus($service_id, $status) {
+    static function changeStatus($data, $id) {
+        if (!isset($data['comment'])) {
+            $data['comment'] = '';
+        }
         DB::table('services')
-            ->where('service_id', $service_id)
-            ->update(['status' => $status]);
+            ->where('service_id', $id)
+            ->update(['status' => $data['status'],]);
+        DB::table('status_history')->insert(
+            [
+                'service_id' => $id,
+                'status' => $data['status'],
+                'comment' => $data['comment'],
+                'operator_id' => Auth::id()
+            ]
+        );
         return true;
+    }
+    static function getHistory($service_id) {
+        $history = DB::table('status_history')
+            ->where('service_id', $service_id)
+            ->get();
+        return $history;
     }
 }

@@ -63,6 +63,10 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="user-comment">Дополнительно (не идет в квитаницю):</label>
+            <textarea class="form-control" rows="5" id="user-comment" name="user_comment" placeholder="Дополнительно (не идет в квитаницю)"></textarea>
+        </div>
+        <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default">Принять в ремонт</button>
             </div>

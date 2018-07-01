@@ -25,10 +25,10 @@ class ServicesController extends Controller
         return view('services',$data);
     }
 
-    public function getService(Request $request, $id)
+    public function getService($id)
     {
-        $service = Services::getService($id);
-        $data['service'] = $service;
+        $data['service'] = Services::getService($id);
+        $data['history'] = Services::getHistory($id);
         return view('service',$data);
     }
 
@@ -37,11 +37,24 @@ class ServicesController extends Controller
         $data['services'] = $request->all();
         return view('addservice',$data);
     }
+    public function getFormStatus(Request $request)
+    {
+        $data['services'] = $request->all();
+        return view('changestatus',$data);
+    }
 
     public function addService(Request $request)
     {
         $services = $request->all();
         Services::addService($services);
-        return view('success');
+        $message['success'] = 'Принято в ремонт';
+        return view('success', $message);
+    }
+    public function changeStatus(Request $request, $id)
+    {
+        $data = $request->all();
+        Services::changeStatus($data, $id);
+        $message['success'] = 'Статус изменен';
+        return view('success', $message);
     }
 }

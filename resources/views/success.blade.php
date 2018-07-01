@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="flex-center position-ref full-height">
-    Устройство добавлено в базу
+   {{ $success }}
             </div>
         </div>
     </div>
