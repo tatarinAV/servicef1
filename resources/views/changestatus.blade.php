@@ -8,9 +8,15 @@
         <div class="form-group">
             <label for="status">Выберите статус:</label>
             <select class="form-control" id="status" name="status">
-                <option value="1">В ремонте</option>
-                <option value="2">Отремонтирован</option>
-                <option value="3">Выдан клиенту</option>
+                <option value="1">Принят в ремонт</option>
+                <option value="2">Передан мастеру</option>
+                <option value="3">Проведена диагностика</option>
+                <option value="4">Ожидает ответа клиента</option>
+                <option value="5">В ремонте (ожидает запчастей)</option>
+                <option value="6">В ремонте</option>
+                <option value="7">Отремонтирован</option>
+                <option value="8">На выдаче (клиент оповещен)</option>
+                <option value="9">Выдан клиенту</option>
             </select>
         </div>
 

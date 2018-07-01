@@ -24,13 +24,26 @@
                             <tr>
                                 <td>{{ $service->service_id }}</td>
                                 <td>{{ $service->name }} {{ $service->surname }} {{ $service->phone }}</td>
-                                <td>@if ($service->status == 1)
-                                    В ремонте
-                                @elseif ($service->status == 2)
-                                    Отремонтирован
-                                @elseif ($service->status == 3)
-                                    Завершен
-                                @endif
+                                <td><b>
+                                    @if ($service->status == 1)
+                                        Принят в ремонт
+                                    @elseif ($service->status == 2)
+                                        Передан мастеру
+                                    @elseif ($service->status == 3)
+                                        Проведена диагностика
+                                    @elseif ($service->status == 4)
+                                        Ожидает ответа клиента
+                                    @elseif ($service->status == 5)
+                                        В ремонте (ожидает запчастей)
+                                    @elseif ($service->status == 6)
+                                        В ремонте
+                                    @elseif ($service->status == 7)
+                                        Отремонтирован
+                                    @elseif ($service->status == 8)
+                                        На выдаче (клиент оповещен)
+                                    @elseif ($service->status == 9)
+                                        Выдан клиенту
+                                    @endif</b>
                                 </td>
                                 <td>
                                     @if ($service->type_id == 1)

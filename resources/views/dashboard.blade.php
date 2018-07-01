@@ -42,11 +42,7 @@
             <div class="flex-center position-ref full-height">
                 <div class="btn-group-vertical">
                     <a href="/add" class="btn btn-primary">Принять на ремонт</a>
-                    <a href="/services?status=1" class="btn btn-primary">Посмотреть текущие ремонты</a>
-                    <a href="/services?status=2" class="btn btn-primary">Посмотреть отремонтированные</a>
-                    <a href="/services?status=2" class="btn btn-primary">Посмотреть выданые</a>
                     <a href="/services" class="btn btn-primary">Посмотреть все ремонты</a>
-                    <a href="/find" class="btn btn-primary">Найти ремонт</a>
                 </div>
             </div>
         </div>

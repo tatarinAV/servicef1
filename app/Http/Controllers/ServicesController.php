@@ -25,8 +25,16 @@ class ServicesController extends Controller
         return view('services',$data);
     }
 
-    public function getService($id)
+    public function getService(Request $request, $id)
     {
+        $data['request'] = $request;
+        if (isset($request->success)) {
+            if ($request->success == 1) {
+                $request->success = 'Принят в ремонт';
+            } elseif ($request->success == 2) {
+                $request->success = 'Статус изменен';
+            }
+        }
         $data['service'] = Services::getService($id);
         $data['history'] = Services::getHistory($id);
         return view('service',$data);
@@ -46,15 +54,13 @@ class ServicesController extends Controller
     public function addService(Request $request)
     {
         $services = $request->all();
-        Services::addService($services);
-        $message['success'] = 'Принято в ремонт';
-        return view('success', $message);
+        $id = Services::addService($services);
+        return redirect('/services/'.$id.'?success=1');
     }
     public function changeStatus(Request $request, $id)
     {
         $data = $request->all();
         Services::changeStatus($data, $id);
-        $message['success'] = 'Статус изменен';
-        return view('success', $message);
+        return redirect('/services/'.$id.'?success=2');
     }
 }

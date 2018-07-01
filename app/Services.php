@@ -92,7 +92,7 @@ class Services extends Model
             ]
         );
 
-        return true;
+        return $service_id;
     }
     static function changeStatus($data, $id) {
         if (!isset($data['comment'])) {
