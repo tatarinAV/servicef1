@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services;
+use Illuminate\Support\Facades\Auth;
 
 class ServicesController extends Controller
 {
@@ -36,8 +37,19 @@ class ServicesController extends Controller
             }
         }
         $data['service'] = Services::getService($id);
-        $data['history'] = Services::getHistory($id);
+        $history = Services::getHistory($id);
+        $data['history'] = array();
+        foreach ($history as $key => $history) {
+            $data['history'][$key] = $history;
+            $data['history'][$key]->name = Auth::user()->name;
+        }
         return view('service',$data);
+    }
+
+    public function printServiceAdd($id)
+    {
+        $data['service'] = Services::getService($id);
+        return view('print-add',$data);
     }
 
     public function getForm(Request $request)
@@ -63,4 +75,5 @@ class ServicesController extends Controller
         Services::changeStatus($data, $id);
         return redirect('/services/'.$id.'?success=2');
     }
+
 }

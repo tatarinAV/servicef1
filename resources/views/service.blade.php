@@ -174,7 +174,7 @@
                                         Выдан клиенту
                                     @endif</b></td>
                             <td>{{ $item->comment }}</td>
-                            <td>{{ $item->operator_id }}</td>
+                            <td>{{ $item->name }}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -13,6 +13,7 @@
 Route::get('/add', 'ServicesController@getForm');
 Route::post('/add', 'ServicesController@addService');
 Route::get('/services/{service_id}', 'ServicesController@getService');
+Route::get('/services/print/add/{service_id}', 'ServicesController@printServiceAdd');
 Route::get('/services/status/{service_id}', 'ServicesController@getFormStatus');
 Route::post('/services/status/{service_id}', 'ServicesController@changeStatus');
 Route::get('/services', 'ServicesController@index');
