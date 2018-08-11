@@ -15,7 +15,7 @@
                             <td>Статус</td>
                             <td>Тип</td>
                             <td>Модель</td>
-                            <td>Серийный номер</td>
+                            <td>Принят</td>
                             <td>Комментарий</td>
                         </tr>
                         </thead>
@@ -61,10 +61,10 @@
                                     @endif
                                 </td>
                                 <td>{{ $service->model }}</td>
-                                <td>{{ $service->serial }}</td>
-                                <td width="30%">{{ $service->comment }}</td>
+                                <td>{{ $service->created_at }}</td>
+                                <td width="25%">{{ $service->comment }}</td>
 
-                                <td><div class="btn-group btn-group-sm">
+                                <td width="145px"><div class="btn-group btn-group-sm">
                                         <a href="services/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Посмотреть"><span class="glyphicon glyphicon-eye-open"></span></a>
                                         <a href="services/edit/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Редактировать"><span class="glyphicon glyphicon-edit"></span></a>
                                         <a href="services/remove/{{ $service->service_id }}" type="button" class="btn btn-primary btn-danger" title="Удалить"><span class="glyphicon glyphicon-remove-sign"></span></a>

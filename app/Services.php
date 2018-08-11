@@ -15,6 +15,7 @@ class Services extends Model
                 ->leftJoin('services_description', 'services.service_id', '=', 'services_description.service_id')
                 ->leftJoin('clients', 'services.client_id', '=', 'clients.client_id')
                 ->select('*','services_description.comment as comment')
+                ->orderBy('services.service_id', 'desc')
                 ->get();
         } elseif (isset($data['status'])) {
             $services = DB::table('services')

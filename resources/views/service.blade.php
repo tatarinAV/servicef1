@@ -20,6 +20,14 @@
                 </tr>
                 <tr>
                     <td>
+                       Дата и время приема в ремонт
+                    </td>
+                    <td>
+                        {{ $service->created_at }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Клиент
                     </td>
                     <td>
@@ -147,6 +155,7 @@
                     <tr>
                         <td>Статус</td>
                         <td>Комментарий</td>
+                        <td>Дата и время изменения</td>
                         <td>Оператор</td>
                     </tr>
                     </thead>
@@ -174,6 +183,7 @@
                                         Выдан клиенту
                                     @endif</b></td>
                             <td>{{ $item->comment }}</td>
+                            <td>{{ $item->updated_at }}</td>
                             <td>{{ $item->name }}</td>
                         </tr>
                     @endforeach
