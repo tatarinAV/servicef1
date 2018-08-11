@@ -61,7 +61,8 @@ class Services extends Model
                     'surname' => $data['surname'],
                     'phone' => $data['phone'],
                     'email' => $data['email'],
-                    'comment' => $data['user_comment']
+                    'comment' => $data['user_comment'],
+
                ]
         );
 
@@ -70,14 +71,19 @@ class Services extends Model
                 'operator_id' => Auth::id(),
                 'client_id' => $client_id,
                 'status' => '1',
+                "created_at" =>  \Carbon\Carbon::now()->toDateTimeString(), # \Datetime(),
+                "updated_at" => \Carbon\Carbon::now()->toDateTimeString(),  # \Datetime(),
             ]
         );
+
         DB::table('status_history')->insert(
             [
                 'service_id' => $service_id,
                 'status' => 1,
                 'comment' => $data['comment'],
-                'operator_id' => Auth::id()
+                'operator_id' => Auth::id(),
+                "created_at" =>  \Carbon\Carbon::now()->toDateTimeString(), # \Datetime()
+                "updated_at" => \Carbon\Carbon::now()->toDateTimeString(),  # \Datetime()
             ]
         );
 
@@ -89,6 +95,7 @@ class Services extends Model
                 'serial' => $data['serial'],
                 'comment' => $data['comment'],
                 'equipment' => $data['equipment'],
+
             ]
         );
 
@@ -106,7 +113,9 @@ class Services extends Model
                 'service_id' => $id,
                 'status' => $data['status'],
                 'comment' => $data['comment'],
-                'operator_id' => Auth::id()
+                'operator_id' => Auth::id(),
+                "created_at" =>  \Carbon\Carbon::now()->toDateTimeString(), # \Datetime()
+                "updated_at" => \Carbon\Carbon::now()->toDateTimeString(),  # \Datetime()
             ]
         );
         return true;

@@ -65,9 +65,9 @@
                                 <td width="30%">{{ $service->comment }}</td>
 
                                 <td><div class="btn-group btn-group-sm">
-                                        <a href="/services/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Посмотреть"><span class="glyphicon glyphicon-eye-open"></span></a>
-                                        <a href="/services/edit/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Редактировать"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="/services/remove/{{ $service->service_id }}" type="button" class="btn btn-primary btn-danger" title="Удалить"><span class="glyphicon glyphicon-remove-sign"></span></a>
+                                        <a href="services/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Посмотреть"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                        <a href="services/edit/{{ $service->service_id }}" type="button" class="btn btn-primary" title="Редактировать"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="services/remove/{{ $service->service_id }}" type="button" class="btn btn-primary btn-danger" title="Удалить"><span class="glyphicon glyphicon-remove-sign"></span></a>
                                     </div></td>
                             </tr>
 

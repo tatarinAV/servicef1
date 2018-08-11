@@ -41,8 +41,8 @@
         <div class="row">
             <div class="flex-center position-ref full-height">
                 <div class="btn-group-vertical">
-                    <a href="/add" class="btn btn-primary">Принять на ремонт</a>
-                    <a href="/services" class="btn btn-primary">Посмотреть все ремонты</a>
+                    <a href="add" class="btn btn-primary">Принять на ремонт</a>
+                    <a href="services" class="btn btn-primary">Посмотреть все ремонты</a>
                 </div>
             </div>
         </div>

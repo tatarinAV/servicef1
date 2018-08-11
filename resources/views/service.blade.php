@@ -132,11 +132,11 @@
                 </tbody>
             </table>
             <div class="btn-group">
-                <a href="/services/print/add/{{ $service->service_id }}" class="btn btn-success">Распечатать приемку</a>
-                <a href="/services/print/return/{{ $service->service_id }}" class="btn btn-success">Распечатать акт выдачи</a>
-                <a href="/services/status/{{ $service->service_id }}" class="btn btn-primary">Изменить статус</a>
-                <a href="/services/edit/{{ $service->service_id }}" class="btn btn-primary">Редактировать</a>
-                <a href="/services/delete/{{ $service->service_id }}" class="btn btn-danger ">Удалить</a>
+                <a href="print/add/{{ $service->service_id }}" class="btn btn-success">Распечатать приемку</a>
+                <a href="print/return/{{ $service->service_id }}" class="btn btn-success">Распечатать акт выдачи</a>
+                <a href="status/{{ $service->service_id }}" class="btn btn-primary">Изменить статус</a>
+                <a href="edit/{{ $service->service_id }}" class="btn btn-primary">Редактировать</a>
+                <a href="delete/{{ $service->service_id }}" class="btn btn-danger ">Удалить</a>
             </div>
         </div>
         @if(isset($history) && $history)
